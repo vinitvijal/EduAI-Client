@@ -1,3 +1,9 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,51 +13,53 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model chapter {
-  chapterId   String    @id
-  chapterName String
-  classId     String
-  teacherId   String
-  classroom   classroom @relation(fields: [classId], references: [classId])
-  user        user      @relation(fields: [teacherId], references: [userId])
-  content     content[]
+
+model user {
+  userId String @id @default(cuid())
+  name String
+  email String
+  password String
+  type String
+  classrooms classroom[]
+  enrolled enrolled[]
+  chapter chapter[]
 }
 
 model classroom {
-  classId   String     @id
+  classId String @id @default(cuid())
   className String
-  ownerId   String
-  chapter   chapter[]
-  user      user       @relation(fields: [ownerId], references: [userId])
-  enrolled  enrolled[]
-}
-
-model content {
-  fileId    String  @id
-  chapterId String
-  fileName  String
-  fileUrl   String
-  fileType  String
-  classId   String  @default("Hello")
-  chapter   chapter @relation(fields: [chapterId], references: [chapterId])
+  ownerId String
+  ownerUser user @relation(fields: [ownerId], references: [userId])
+  enrolled enrolled[]
+  chapter chapter[]
 }
 
 model enrolled {
-  enrollId  String    @id
-  studId    String
-  classId   String
-  status    String
+  enrollId String @id @default(cuid())
+  studId String
+  classId String
+  status String
+  user user @relation(fields: [studId], references: [userId])
   classroom classroom @relation(fields: [classId], references: [classId])
-  user      user      @relation(fields: [studId], references: [userId])
 }
 
-model user {
-  userId    String      @id
-  name      String
-  email     String
-  password  String
-  type      String
-  chapter   chapter[]
-  classroom classroom[]
-  enrolled  enrolled[]
+model chapter {
+  chapterId String @id @default(cuid())
+  chapterName String
+  classId String
+  teacherId String
+  classroom classroom @relation(fields: [classId], references: [classId])
+  user user @relation(fields: [teacherId], references: [userId])
+  content content[]
+}
+
+
+model content {
+  fileId String @id @default(cuid())
+  chapterId String
+  fileName String
+  fileUrl String
+  fileType String
+  classId String @default("Hello")
+  chapter chapter @relation(fields: [chapterId], references: [chapterId])
 }
