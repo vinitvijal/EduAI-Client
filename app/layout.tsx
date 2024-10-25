@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "EduBridge.AI",
+  title: "EduAI.AI",
   description: "Companion for Everyone",
 };
 

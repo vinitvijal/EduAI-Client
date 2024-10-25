@@ -48,7 +48,7 @@ export default function LoginPage() {
           <div className="flex justify-center mb-6">
             <LogIn className="h-12 w-12 text-indigo-600" />
           </div>
-          <CardTitle className="text-2xl font-bold text-center text-gray-800">Welcome to Edubridge</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center text-gray-800">Welcome to EduAI</CardTitle>
           <CardDescription className="text-center text-gray-600">
             Sign in to your account to continue
           </CardDescription>

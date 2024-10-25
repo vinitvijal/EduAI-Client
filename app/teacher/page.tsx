@@ -274,7 +274,7 @@ export default function TeacherPortal() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <header className="flex justify-between items-center p-4 border-b">
-        <h1 className="text-2xl font-bold text-primary">Edubridge</h1>
+        <h1 className="text-2xl font-bold text-primary">EduAI</h1>
         <Button variant="ghost" size="icon">
           <LogIn className="w-6 h-6" />
           <span className="sr-only">Login</span>

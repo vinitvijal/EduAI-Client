@@ -91,7 +91,7 @@ useEffect(()=>{
           <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center">
             <Bird className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-indigo-600">Edubridge</h1>
+          <h1 className="text-2xl font-bold text-indigo-600">EduAI</h1>
         </div>
         <Button variant="ghost" size="icon">
           <LogIn className="w-6 h-6" />
